@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excel Learning Simulator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background-color: #ffeb3b;
+      }
+      #root {
+        width: 100vw;
+        height: 100vh;
+      }
+      #loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+    <script>
+      console.log('🟡 HTML loaded');
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('🟡 DOM ready');
+      });
+    </script>
+  </head>
+  <body>
+    <div id="loading">⏳ Loading React App...</div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
