@@ -1,8 +1,8 @@
-import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router";
 import Main from "./Main";
 import CompletionPage from "./pages/CompletionPage";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     Component: Main,
