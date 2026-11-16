@@ -191,6 +191,9 @@ export default function ScenarioPanel({ isCollapsed, onToggleCollapse, completed
 
   // Filter out task headers when counting for mobile display
   const actualSteps = tasks.filter(t => !t.isTaskHeader);
+  const currentHintStep = actualSteps.find(step => !step.completed);
+  const currentHintStepNumber = currentHintStep ? actualSteps.indexOf(currentHintStep) + 1 : actualSteps.length;
+  const allTasksComplete = !currentHintStep;
 
   // Helper function to convert step ID to numeric task ID
   const getNumericTaskId = (stepId: string): number => {
@@ -454,12 +457,14 @@ export default function ScenarioPanel({ isCollapsed, onToggleCollapse, completed
         </div>
 
         <div className="scenario-hint">
-          <h3 className="hint-heading">💡 Current Hint</h3>
-          <Badge className="hint-badge" color={BadgeColor.warning} variant={BadgeVariant.label}>
-            Step {actualSteps.findIndex(t => !t.completed) + 1 || actualSteps.length} of {actualSteps.length}
-          </Badge>
+          <h3 className="hint-heading">{allTasksComplete ? '✓ Session Complete' : '💡 Current Hint'}</h3>
+          {currentHintStep && (
+            <Badge className="hint-badge" color={BadgeColor.warning} variant={BadgeVariant.label}>
+              Step {currentHintStepNumber} of {actualSteps.length}
+            </Badge>
+          )}
           <p className="hint-text">
-            {tasks.find(t => !t.completed)?.hint || 'Great job! All tasks completed! 🎉'}
+            {currentHintStep?.hint || 'Excellent work! All tasks completed! 🎉'}
           </p>
         </div>
       </div>
@@ -513,14 +518,16 @@ export default function ScenarioPanel({ isCollapsed, onToggleCollapse, completed
 
       {renderPopupPanel(
         'hints',
-        'Current Hint',
+        allTasksComplete ? 'Session Complete' : 'Current Hint',
         <Lightbulb size={16} />,
         <div className="hint-content-wrapper">
-          <Badge className="hint-badge" color={BadgeColor.warning} variant={BadgeVariant.label}>
-            Step {actualSteps.findIndex(t => !t.completed) + 1 || actualSteps.length} of {actualSteps.length}
-          </Badge>
+          {currentHintStep && (
+            <Badge className="hint-badge" color={BadgeColor.warning} variant={BadgeVariant.label}>
+              Step {currentHintStepNumber} of {actualSteps.length}
+            </Badge>
+          )}
           <p className="popup-text hint-text-content">
-            {tasks.find(t => !t.completed)?.hint || 'Excellent work! All tasks completed! 🎉'}
+            {currentHintStep?.hint || 'Excellent work! All tasks completed! 🎉'}
           </p>
         </div>
       )}
