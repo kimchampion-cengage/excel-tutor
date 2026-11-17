@@ -5,8 +5,6 @@ AI Tutor for Excel is a browser-based learning prototype that lets students prac
 > **Live app:** [kimchampion-cengage.github.io/excel-tutor](https://kimchampion-cengage.github.io/excel-tutor/)
 > **Source repository:** [github.com/kimchampion-cengage/excel-tutor](https://github.com/kimchampion-cengage/excel-tutor)
 
-The app was exported from Figma Make and is being developed as a React application. The original Figma design is [AI Tutor for Excel](https://www.figma.com/design/heoo0rKDM4sTSbBIqYv5bJ/AI-Tutor-for-Excel).
-
 ## What learners can do
 
 - Open a retail inventory analysis scenario and review its objectives.
